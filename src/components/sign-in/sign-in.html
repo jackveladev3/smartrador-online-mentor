@@ -1,0 +1,146 @@
+<v-container class="background">
+  <div class="border mb-5">
+    <v-snackbar
+      v-model="isSuccess"
+      bottom
+      color="success"
+      :timeout="timeout"
+    >
+      {{ message }}
+      <v-btn
+        dark
+        text
+        @click="isSuccess = false"
+      >
+        <v-icon>fas fa-times</v-icon>
+      </v-btn>
+    </v-snackbar>
+    <v-snackbar
+      v-model="isAlert"
+      bottom
+      color="error"
+      :timeout="timeout"
+    >
+      {{ error.message }}
+      <v-btn
+        dark
+        text
+        @click="isAlert = false"
+      >
+        <v-icon>fas fa-times</v-icon>
+      </v-btn>
+    </v-snackbar>
+    <v-snackbar
+      v-model="isActivate"
+      bottom
+      color="info"
+      :timeout="timeout"
+    >
+      {{ error.message }}
+      <v-btn
+        dark
+        text
+        @click="isActivate = false"
+      >
+        <v-icon>fas fa-times</v-icon>
+      </v-btn>
+    </v-snackbar>
+
+    <!-- ログイン START -->
+    <div v-if="tab == '1'">
+      <h1 class="title text-center">先生のログイン</h1>
+      <p class="caption mt-2 mb-0 text-center grey--text text--darken-1">
+        スマートレーダーのアカウントでログイン
+      </p>
+      <v-form class="form" @submit="login">
+        <v-text-field
+          v-model="loginParam.email"
+          type="text"
+          label="メールアドレス"
+          color="success"
+          required
+          :rules="[checkEmail]"
+        ></v-text-field>
+        <v-text-field
+          v-model="loginParam.password"
+          type="password"
+          label="パスワード"
+          color="success"
+          required
+          :rules="[checkPassword]"
+        ></v-text-field>
+        <v-btn type="submit" color="success" class="size btn-org mt-4" :disabled="loginParam.isPush" :loading="loginParam.isPush">
+          ログイン
+        </v-btn>
+      </v-form>
+      <div class="link-wrapper mt-4" @click="tab = '2'">
+        <div class="link flexiblebox">
+          パスワードを忘れた方はこちら
+          <v-icon>fas fa-chevron-right</v-icon>
+        </div>
+      </div>
+      <v-row class="link-wrapper mt-4" justify="center" align="center">
+        <v-btn text small color="primary" :href="env.VUE_APP_SR + '/teacher/sign-up'">新規登録</v-btn>
+        <span class="mx-1">|</span>
+        <v-btn text small color="primary" href="https://smartrador.com/teacher">トップページ</v-btn>
+      </v-row>
+    </div>
+    <!-- ログイン END -->
+
+    <!-- パスワードの再設定 START -->
+    <div v-if="tab == '2'">
+      <h1 class="title text-center">パスワードの再設定</h1>
+      <div class="description text-left">
+        ご登録のメールアドレスを入力してください。<br>
+        ご登録のメールアドレスに検証コードが送信されます。<br>
+        次の画面で検証コードと新しいパスワードを入力してください。
+      </div>
+      <v-form class="form" @submit="forgotPassword">
+        <v-text-field
+          v-model="forgotParam.email"
+          type="text"
+          label="メールアドレス"
+          color="success"
+          required
+          :rules="[checkEmail]"
+        ></v-text-field>
+        <v-text-field
+          v-model="forgotParam.code"
+          type="text"
+          label="検証コード"
+          color="success"
+          required
+          :rules="[checkCode]"
+          v-if="isConfirm"
+        ></v-text-field>
+        <v-text-field
+          v-model="forgotParam.newPassword"
+          type="password"
+          label="新しいパスワード"
+          color="success"
+          required
+          :rules="[checkPassword]"
+          v-if="isConfirm"
+        ></v-text-field>
+        <v-btn type="submit" color="success" class="size btn-org mt-4" :disabled="forgotParam.isPush" :loading="forgotParam.isPush" v-if="!isConfirm">
+          検証コードを取得する
+        </v-btn>
+        <v-btn type="submit" color="success" class="size btn-org mt-4" :disabled="forgotParam.isPush" :loading="forgotParam.isPush" v-else>
+          変更する
+        </v-btn>
+      </v-form>
+      <div class="link-wrapper mt-4" @click="tab = '1'">
+        <div class="link flexiblebox">
+          ログインはこちら
+          <v-icon small>fas fa-chevron-right</v-icon>
+        </div>
+      </div>
+      <v-row class="link-wrapper mt-4" justify="center" align="center">
+        <v-btn text small color="primary" to="/signup">新規登録</v-btn>
+        <span class="mx-1">|</span>
+        <v-btn text small color="primary" href="https://smartthon.com">トップページ</v-btn>
+      </v-row>
+    </div>
+    <!-- パスワードの再設定 END -->
+  </div>
+</v-container>

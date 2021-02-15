@@ -1,0 +1,152 @@
+.background {
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 64px);
+}
+
+.background .logo-area {
+  padding: 40px;
+}
+
+.background .logo-area img {
+  height: 50px;
+}
+
+.background .logo-area .tag-wrapper {
+  padding: 10px;
+  display: inline;
+}
+
+.background .logo-area .tag-wrapper .tag {
+  padding: 5px 10px;
+  background: #FFFFFF;
+  color: #1E4573;
+  font-size: 20px;
+  font-weight: bold;
+  width: 150px;
+  border-radius: 4px;
+  border: 1px solid #1E4573;
+}
+
+.background .border {
+  background: #ffffff;
+  border-color: #ccc;
+  padding: 20px 0 20px 0;
+  -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  width: 500px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.alert-area {
+  padding: 0 20px;
+}
+
+.warn {
+  color: red;
+  text-align: left;
+  font-size: 12px;
+}
+
+.description {
+  font-size: 14px;
+  margin: 10px 20px;
+  background: #f8f9fe;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.description .info {
+  color: #1E4573;
+}
+
+.form {
+  padding: 30px 20px;
+  margin: 0 auto;
+}
+
+.btn-area {
+  padding: 0 20px;
+}
+
+.size {
+  font-size: 14px;
+}
+
+.btn-disable {
+  font-weight: bold;
+  cursor: not-allowed!important;
+  width: 100%;
+}
+
+.btn-org {
+  background-color: #1E4573;
+  border-color: #1E4573;
+  font-weight: bold;
+  width: 100%;
+  height: 35px;
+}
+
+.btn-org:hover {
+  background-color: rgba(30,69,115,0.8);
+  border-color: rgba(30,69,115,0.8);
+}
+
+.link-wrapper  {
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.link {
+  padding: 5px 20px;
+  width: 280px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.flexiblebox {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+  align-items: center; /* 縦方向中央揃え */
+  -webkit-justify-content: center; /* 横方向中央揃え（Safari用） */
+  justify-content: space-between;
+}
+
+@media (max-width:767px) {
+  .background .logo-area {
+    padding: 10px;
+    margin: 30px 0;
+  }
+
+  .background .logo-area img {
+    width: 80%;
+    object-fit: contain;
+  }
+
+  .background .logo-area .tag-wrapper {
+    display: block;
+  }
+
+  .background .logo-area .tag-wrapper .tag {
+    font-size: 14px;
+  }
+
+  .background .border {
+    width: 100%;
+  }
+
+  .item {
+    font-size: 12px;
+  }
+
+  .form .size {
+    font-size: 16px;
+  }
+}
